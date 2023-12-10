@@ -91,14 +91,64 @@ GitHub matches: [
 ## Supported Platforms
 
 ```javascript
-const supportedPlatforms = SocialsRegex.Platforms.all;
-// Output: ['PLATFORM_FACEBOOK', 'PLATFORM_GITHUB', 'PLATFORM_LINKEDIN', 'PLATFORM_TWITTER', 'PLATFORM_INSTAGRAM', 'PLATFORM_YOUTUBE', ...]
+const { SocialsRegex, SocialExtraction, PlatformsRegex } = require('socials_regex');
+const supportedPlatforms = PlatformsRegex.supportedPlatformsRegex();
+console.log(supportedPlatforms)
+// output
+[
+        'yelp',                  'whatsapp',
+        'stackexchange network', 'crunchbase',
+        'angellist',             'xing',
+        'vimeo',                 'telegram',
+        'stackoverflow',         'stackexchange',
+        'snapchat',              'skype',
+        'reddit',                'phone',
+        'medium',                'hackernews',
+        'email',                 'youtube',
+        'instagram',             'twitter',
+        'linkedin',              'github',
+        'facebook'
+]
+
+// OR 
+
+const { SocialsRegex, SocialExtraction, PlatformsRegex } = require('socials_regex');
+const supportedPlatforms = SocialsRegex.Platforms.all();
+console.log(supportedPlatforms)
+
+        [
+        'PLATFORM_FACEBOOK',
+                'PLATFORM_GITHUB',
+                'PLATFORM_LINKEDIN',
+                'PLATFORM_TWITTER',
+                'PLATFORM_INSTAGRAM',
+                'PLATFORM_YOUTUBE',
+                'PLATFORM_EMAIL',
+                'PLATFORM_HACKER_NEWS',
+                'PLATFORM_MEDIUM',
+                'PLATFORM_PHONE',
+                'PLATFORM_REDDIT',
+                'PLATFORM_SKYPE',
+                'PLATFORM_SNAPCHAT',
+                'PLATFORM_STACKEXCHANGE',
+                'PLATFORM_STACKOVERFLOW',
+                'PLATFORM_TELEGRAM',
+                'PLATFORM_VIMEO',
+                'PLATFORM_XING',
+                'PLATFORM_ANGELLIST',
+                'PLATFORM_CRUNCHBASE',
+                'PLATFORM_STACKEXCHANGE_NETWORK',
+                'PLATFORM_WHATSAPP',
+                'PLATFORM_YELP',
+                'all',
+                'show'
+        ]
 ```
 
 ## Supported Regexes
 
 ```javascript
-const supportedRegexes = SocialsRegex.Regexes.all;
+const supportedRegexes = SocialsRegex.Regexes.all();
 // Output: ['ANGELLIST_URL_REGEX', 'CRUNCHBASE_URL_REGEX', 'EMAIL_URL_REGEX', 'FACEBOOK_URL_REGEX', 'GITHUB_URL_REGEX', 'HACKERNEWS_URL_REGEX', ...]
 ```
 
