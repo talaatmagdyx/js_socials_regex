@@ -1,6 +1,6 @@
 {
   "name": "socials_regex",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "🪡 Social account detection and extraction in js, e.g. for crawling/scraping.",
   "main": "src/index.js",
   "scripts": {
