@@ -4,6 +4,6 @@
 
 - first release
 
-## [1.0.0] - 2023-12-12
+## [1.0.2] - 2023-12-12
 
-- improve docs 
+- improve docs & deepsource
