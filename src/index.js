@@ -29,7 +29,7 @@ class PlatformsRegex {
         [SocialsRegex.Platforms.PLATFORM_FACEBOOK]: SocialsRegex.Regexes.FACEBOOK_URL_REGEX
     };
 
-    static ERROR_MSG_UNKNOWN_PLATFORM = "Unknown platform, expected one of " + Object.keys(SocialsRegex.Platforms).join(", ");
+    static ERROR_MSG_UNKNOWN_PLATFORM = `Unknown platform, expected one of ${Object.keys(SocialsRegex.Platforms).join(", ")}`;
 
     static supportedPlatformsRegex(){
         return Object.keys(PlatformsRegex.REGEX);
@@ -88,26 +88,27 @@ class SocialExtraction {
         // Case 1: Single RegExp
         if (typeof regex === 'object' && regex instanceof RegExp) {
             // Example: extractMatchesByRegex(/github\.com/, text);
-            return SocialExtraction.matches({ regex: regex, text: text });
+            return SocialExtraction.matches({ regex, text });
         }
         // Case 2: Object with Named Regex Patterns
         else if (typeof regex === 'object' && regex.constructor === Object) {
-            let values = {};
+            const values = {};
             // Iterate over named regex patterns in the object
             Object.entries(regex).forEach(([key, regexValue]) => {
                 // Example: extractMatchesByRegex({ github: /github\.com/, twitter: /twitter\.com/ }, text);
-                values[key] = SocialExtraction.matches({ regex: regexValue, text: text });
+                values[key] = SocialExtraction.matches({ regex: regexValue, text });
             });
             return values;
         }
         // Case 3: Array of RegExp Patterns
         else if (Array.isArray(regex)) {
-            let regexValues = [];
+            const regexValues = [];
             // Iterate over each element (regex) in the array
-            regex.forEach(function(element) {
+            regex.forEach(element => {
                 // Example: extractMatchesByRegex([/github\.com/, /twitter\.com/], text);
-                regexValues.push(SocialExtraction.matches({ regex: element, text: text }));
+                regexValues.push(SocialExtraction.matches({ regex: element, text }));
             });
+
             return regexValues;
         }
         // Case: Unsupported Type

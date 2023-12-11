@@ -28,12 +28,12 @@ SocialsRegex.Platforms = {
     PLATFORM_YELP: 'yelp',
 
     // Define the 'all' and 'show' methods in the Platforms class
-    all: function() {
+    all() {
         return Object.keys(this);
     },
 
-    show: function(const_name) {
-        return this[const_name] || '';
+    show(const_name) {
+        return this[const_name] ?? '';
     }
 };
 
@@ -58,7 +58,7 @@ SocialsRegex.Regexes = {
     EMAIL_URL_REGEX: {
         // jeff@amazon.com, mailto:jeff@amazon.com, mailto:plususer+test@gmail.com
         email: /(?:mailto:)?(?<email>[A-Za-z0-9_.+-]+@[A-Za-z0-9_.-]+\.[A-Za-z]+)/,
-        email_without_extract: /\A[\w+\-.]+@[a-z\d-]+(\.[a-z\d-]+)*\.[a-z]+\z/i
+        email_without_extract: /^[\w+\-.]+@[a-z\d-]+(\.[a-z\d-]+)*\.[a-z]+$/i
     },
     FACEBOOK_URL_REGEX: {
         // http://fb.com/peter_parker-miller, https://facebook.com/peter.parker, https://facebook.com/peterparker
@@ -173,18 +173,18 @@ SocialsRegex.Regexes = {
     XING_URL_REGEX: {
         // Default slugs are Firstname_Lastname. If several people with the same name exist, a number is appended.
         // https://www.xing.com/profile/Tobias_Zilbersahn5
-        profile: /(?:https?:)?\/\/(?:www\.)?xing\.com\/profile\/(?<slug>[A-z0-9\-_]+)/
+        profile: /(?:https?:)?\/\/(?:www\.)?xing\.com\/profile\/(?<slug>[A-Za-z0-9\-_]+)/
     },
     YOUTUBE_URL_REGEX: {
         // https://www.youtube.com/channel/UCxyz123456789
-        channel: /(?:https?:)?\/\/(?:[A-z]+\.)?youtube\.com\/channel\/(?<id>[A-z0-9\-_]+)/,
+        channel: /(?:https?:)?\/\/(?:[A-Za-z]+\.)?youtube\.com\/channel\/(?<id>[A-Za-z0-9\-_]+)/,
         // https://www.youtube.com/user/username123
-        user: /(?:https?:)?\/\/(?:[A-z]+\.)?youtube\.com\/user\/(?<username>[A-z0-9]+)/,
+        user: /(?:https?:)?\/\/(?:[A-Za-z]+\.)?youtube\.com\/user\/(?<username>[A-Za-z0-9]+)/,
         // https://www.youtube.com/watch?v=dQw4w9WgXcQ
         // https://www.youtube.com/watch?v=dQw4w9WgXcQ
         // https://www.youtube.com/embed/dQw4w9WgXcQ
         // https://www.youtube.com/watch?v=6_b7RDuLwcI
-        video: /(?:https?:)?\/\/(?:(?:www\.)?youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)(?<id>[A-z0-9\-_]+)/
+        video: /(?:https?:)?\/\/(?:(?:www\.)?youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)(?<id>[A-Za-z0-9\-_]+)/
     },
 
     WHATSAPP_URL_REGEX: {
@@ -197,12 +197,12 @@ SocialsRegex.Regexes = {
         company: /(?:https?:\/\/)?(?:www\.)?yelp\.com\/biz\/(?<company>[A-Za-z0-9_-]+)/
     },
 
-    isMatch: function(input_str, regex) {
+    isMatch(input_str, regex) {
         return regex.test(input_str);
     },
 
     // Define the 'all' method in the Regexes class
-    all: function() {
+    all() {
         return Object.keys(this);
     }
 };
