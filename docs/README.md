@@ -19,7 +19,11 @@ npm install socials-regex
 ### Importing the Magic
 
 ```javascript
-const { PlatformsRegex, SocialExtraction, SocialsRegex } = require('socials-regex');
+const {
+  PlatformsRegex,
+  SocialExtraction,
+  SocialsRegex,
+} = require("socials-regex");
 ```
 
 ### PlatformsRegex Class
@@ -63,15 +67,18 @@ console.log(matchesPerPlatform);
 ```javascript
 const regex = PlatformsRegex.REGEX.twitter.user;
 const twitterMatches = SocialExtraction.extractMatchesByRegex(regex, text);
-console.log('Twitter matches:', twitterMatches);
+console.log("Twitter matches:", twitterMatches);
 ```
 
 - **extractMatchesByPlatform(platform, text)**: Perform wizardry to extract matches based on regex patterns defined for a specific social media platform.
 
 ```javascript
 const platform = SocialsRegex.Platforms.PLATFORM_TWITTER;
-const twitterMatches = SocialExtraction.extractMatchesByPlatform(platform, text);
-console.log('Twitter matches:', twitterMatches);
+const twitterMatches = SocialExtraction.extractMatchesByPlatform(
+  platform,
+  text,
+);
+console.log("Twitter matches:", twitterMatches);
 ```
 
 #### Behind the Curtain
@@ -87,7 +94,7 @@ console.log('Twitter matches:', twitterMatches);
 Now, let's put the library to the test with an example:
 
 ```javascript
-const { SocialsRegex, SocialExtraction } = require('socials-regex');
+const { SocialsRegex, SocialExtraction } = require("socials-regex");
 
 const text = `
   Check out my GitHub: https://github.com/example_user
@@ -96,13 +103,19 @@ const text = `
 `;
 
 const matchesPerPlatform = SocialExtraction.extractMatchesPerPlatform(text);
-console.log('Matches per platform:', matchesPerPlatform);
+console.log("Matches per platform:", matchesPerPlatform);
 
-const twitterMatches = SocialExtraction.extractMatchesByPlatform('PLATFORM_TWITTER', text);
-console.log('Twitter matches:', twitterMatches);
+const twitterMatches = SocialExtraction.extractMatchesByPlatform(
+  "PLATFORM_TWITTER",
+  text,
+);
+console.log("Twitter matches:", twitterMatches);
 
-const githubMatches = SocialExtraction.extractMatchesByRegex('GITHUB_URL_REGEX', text);
-console.log('GitHub matches:', githubMatches);
+const githubMatches = SocialExtraction.extractMatchesByRegex(
+  "GITHUB_URL_REGEX",
+  text,
+);
+console.log("GitHub matches:", githubMatches);
 ```
 
 Happy coding! 🚀🔮
