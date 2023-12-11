@@ -6,8 +6,7 @@ name = "javascript"
   [analyzers.meta]
   environment = [
     "nodejs",
-    "browser",
-    "mocha"
+    "browser"
   ]
 
 [[transformers]]
