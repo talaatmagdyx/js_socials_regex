@@ -12,20 +12,16 @@ npm install socials_regex
 
 ## Usage
 
+You can read Full Docs here 
+- [Docs](https://github.com/talaatmagdyx/js_socials_regex/blob/master/docs/README.md)
+- [Example](https://github.com/talaatmagdyx/js_socials_regex/blob/master/examples)
+
+
+#### extractMatchesPerPlatform: 
+Witness the magic of extracting matches for each social media platform within the provided text.
+
 ```javascript
-const { SocialsRegex, SocialExtraction } = require('socials_regex');
 
-// Example usage in your application
-const text = 'Visit my Yelp page: https://www.yelp.com/biz/example-business';
-const platform = SocialsRegex.Platforms.PLATFORM_YELP;
-const matches = SocialExtraction.extractMatchesByPlatform(platform, text);
-
-console.log(matches[SocialsRegex.Platforms.PLATFORM_YELP].company);
-// Output: [{ matched: 'https://www.yelp.com/biz/example-business', company: 'example-business' }]
-```
-
-### more example
-```javascript
 const { SocialsRegex, SocialExtraction, PlatformsRegex } = require('socials_regex');
 
 // Example text containing social platform URLs
@@ -41,23 +37,74 @@ const text = `
 // Use the static method directly
 const matchesPerPlatform = SocialExtraction.extractMatchesPerPlatform(text);
 console.log('Matches per platform:', matchesPerPlatform);
-
-const twitterMatches = SocialExtraction.extractMatchesByPlatform(SocialsRegex.Platforms.PLATFORM_TWITTER, text);
-console.log('Twitter matches:', twitterMatches);
-
-const githubMatches = SocialExtraction.extractMatchesByRegex([PlatformsRegex.REGEX[SocialsRegex.Platforms.PLATFORM_GITHUB].user,
-  PlatformsRegex.REGEX[SocialsRegex.Platforms.PLATFORM_TWITTER].user], text);
-console.log('GitHub matches:', githubMatches);
-
-/*
-* Matches per platform: {
+/* 
+ * Matches per platform: {
   twitter: { user: [ [Object], [Object], [Object] ] },
   linkedin: { profile: [ [Object] ] },
   github: { user: [ [Object] ] }
 }
-Twitter matches: { twitter: { user: [ [Object], [Object], [Object] ] } }
+* */
+```
+
+#### extractMatchesByPlatform: 
+Perform wizardry to extract matches based on regex patterns defined for a specific social media platform.
+
+
+```javascript
+const { SocialsRegex, SocialExtraction } = require('socials_regex');
+
+// Example usage in your application
+const text = 'Visit my Yelp page: https://www.yelp.com/biz/example-business';
+const platform = SocialsRegex.Platforms.PLATFORM_YELP;
+const matches = SocialExtraction.extractMatchesByPlatform(platform, text);
+
+console.log(matches[SocialsRegex.Platforms.PLATFORM_YELP].company);
+// Output: [{ matched: 'https://www.yelp.com/biz/example-business', company: 'example-business' }]
+```
+
+another example 
+```javascript
+const { SocialsRegex, SocialExtraction, PlatformsRegex } = require('socials_regex');
+
+// Example text containing social platform URLs
+const text = `
+  Check out my GitHub: https://github.com/example_user
+  Also, find me on Twitter: https://twitter.com/example_twitter
+   Also, find me on Twitter: https://twitter.com/example_twitter
+  Also, find me on Twitter: https://twitter.com/example_twitter
+
+  Contact me on LinkedIn: https://linkedin.com/in/example_linkedin
+`;
+
+
+const twitterMatches = SocialExtraction.extractMatchesByPlatform(SocialsRegex.Platforms.PLATFORM_TWITTER, text);
+console.log('Twitter matches:', twitterMatches);
+// Twitter matches: { twitter: { user: [ [Object], [Object], [Object] ] } }
+```
+
+#### extractMatchesByRegex:
+Cast a spell to extract matches based on the provided regex pattern within the text.
+
+```javascript
+const { SocialsRegex, SocialExtraction, PlatformsRegex } = require('socials_regex');
+
+// Example text containing social platform URLs
+const text = `
+  Check out my GitHub: https://github.com/example_user
+  Also, find me on Twitter: https://twitter.com/example_twitter
+   Also, find me on Twitter: https://twitter.com/example_twitter
+  Also, find me on Twitter: https://twitter.com/example_twitter
+
+  Contact me on LinkedIn: https://linkedin.com/in/example_linkedin
+`;
+
+const githubMatches = SocialExtraction.extractMatchesByRegex([PlatformsRegex.REGEX[SocialsRegex.Platforms.PLATFORM_GITHUB].user,
+  PlatformsRegex.REGEX[SocialsRegex.Platforms.PLATFORM_TWITTER].user], text);
+console.log('GitHub matches:', githubMatches);
+/*
 GitHub matches: [
-  [
+  [* 
+
     {
       matched: 'https://github.com/example_user',
       login: 'example_user'
@@ -81,12 +128,6 @@ GitHub matches: [
 
 * */
 ```
-
-## Features
-
-- Detect the platform a URL points to (support for major platforms).
-- Extract information contained within the URL without accessing the link.
-- Extract emails and phone numbers from hyperlinks.
 
 ## Supported Platforms
 
@@ -152,6 +193,12 @@ const supportedRegexes = SocialsRegex.Regexes.all();
 // Output: ['ANGELLIST_URL_REGEX', 'CRUNCHBASE_URL_REGEX', 'EMAIL_URL_REGEX', 'FACEBOOK_URL_REGEX', 'GITHUB_URL_REGEX', 'HACKERNEWS_URL_REGEX', ...]
 ```
 
+## Features
+
+- Detect the platform a URL points to (support for major platforms).
+- Extract information contained within the URL without accessing the link.
+- Extract emails and phone numbers from hyperlinks.
+
 ## Development
 
 - Clone the repository: `git clone https://github.com/talaatmagdyx/js_socials_regex.git`
@@ -164,14 +211,13 @@ const supportedRegexes = SocialsRegex.Regexes.all();
 - [Ruby socials_regex](https://github.com/talaatmagdyx/socials_regex) Social Regex Account Detection and Extraction for Ruby. Detect and extract URLs of social accounts: throw in URLs, get back URLs of social media profiles by type.
 
 
-
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at [Contributing](https://github.com/talaatmagdyx/js_socials_regex/blob/master/.github/CONTRIBUTING.md). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/talaatmagdyx/js_socials_regex/blob/master/.github/CODE_OF_CONDUCT.md).
 
 ## License
 
-The pakcage is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The package is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
 ## Reporting Bugs / Feature Requests
 
