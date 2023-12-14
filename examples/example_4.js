@@ -1,4 +1,4 @@
-const { SocialsRegex, SocialExtraction } = require('socials_regex');
+const { SocialsRegex, SocialExtraction } = require("socials_regex");
 
 // User profile description
 const userProfile = `
@@ -8,8 +8,9 @@ const userProfile = `
 `;
 
 // Extract matches per platform
-const matchesPerPlatform = SocialExtraction.extractMatchesPerPlatform(userProfile);
-console.log('Social Media Links:', matchesPerPlatform);
+const matchesPerPlatform =
+  SocialExtraction.extractMatchesPerPlatform(userProfile);
+console.log("Social Media Links:", matchesPerPlatform);
 
 // Output:
 /*
